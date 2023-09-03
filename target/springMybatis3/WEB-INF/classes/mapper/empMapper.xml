@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.niehao.mapper.EmpMapper">
+
+    <resultMap id="baseMapE" type="com.niehao.model.Emp">
+        <id property="empId" column="EMPID"/>
+        <result property="account" column="ACCOUNT"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="name" column="NAME"/>
+        <result property="phone" column="PHONE"/>
+        <result property="hireDate" column="HIREDATE"/>
+        <result property="sal" column="SAL"/>
+        <result property="age" column="AGE"/>
+        <result property="photo" column="PHOTO"/>
+    </resultMap>
+    <select id="queryAccount" resultMap="baseMapE" resultType="com.niehao.model.Emp">
+        SELECT * FROM ADMIN_EMP WHERE ACCOUNT = #{account}
+    </select>
+    <select id="listEmp" resultType="com.niehao.model.Emp" resultMap="baseMapE">
+        SELECT * FROM ADMIN_EMP
+    </select>
+    <select id="selectAll" resultType="long" resultMap="baseMapE">
+        SELECT COUNT(*) FROM ADMIN_EMP
+    </select>
+</mapper>

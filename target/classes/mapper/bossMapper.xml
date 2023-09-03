@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.niehao.mapper.BossMapper">
+
+    <resultMap id="baseMapB" type="com.niehao.model.Boss">
+        <id property="bossId" column="BOSS_ID"/>
+        <result property="account" column="ACCOUNT"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="name" column="NAME"/>
+        <result property="phone" column="PHONE"/>
+        <result property="date" column="JOB_TIME"/>
+    </resultMap>
+    <select id="queryAccount" resultType="com.niehao.model.Boss" resultMap="baseMapB" >
+        SELECT * FROM TB_BOSS WHERE ACCOUNT = #{account}
+    </select>
+    <select id="listBoss" resultMap="baseMapB">
+        SELECT * FROM TB_BOSS
+    </select>
+</mapper>

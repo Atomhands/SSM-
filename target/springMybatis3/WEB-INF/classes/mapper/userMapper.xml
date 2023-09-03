@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.niehao.mapper.UserMapper">
+
+    <resultMap id="baseMap" type="com.niehao.model.User">
+        <id property="id" column="USER_ID"/>
+        <result property="account" column="ACCOUNT"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="name" column="NAME"/>
+        <result property="phone" column="PHONE"/>
+        <result property="date" column="JOIN_DATE"/>
+        <result property="active" column="ACTIVE"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.niehao.model.User">
+        INSERT INTO TB_USERVIP VALUES
+        (#{id},#{account},#{password},#{name},#{phone},#{date},#{active})
+    </insert>
+<!--    <update id="updateById">-->
+<!--        UPDATE TB_BOOK_INFO-->
+<!--        <set>-->
+<!--            <if test="bookName !=null">-->
+<!--                BOOK_NAME = #{bookName},-->
+<!--            </if>-->
+<!--            <if test="publisher !=null">-->
+<!--                PUBLISHER = #{publisher},-->
+<!--            </if>-->
+<!--            <if test="author !=null">-->
+<!--                AUTHOR = #{author},-->
+<!--            </if>-->
+<!--            <if test="bookType !=null">-->
+<!--                BOOK_TYPE = #{bookType},-->
+<!--            </if>-->
+<!--            <if test="remain !=null">-->
+<!--                REMAIN = #{remain},-->
+<!--            </if>-->
+<!--        </set>-->
+<!--        WHERE BOOK_ID = #{bookId}-->
+<!--    </update>-->
+<!--    <delete id="deleteById" parameterType="string">-->
+<!--        DELETE FROM TB_BOOK_INFO WHERE BOOK_ID = #{id}-->
+<!--    </delete>-->
+<!--    <select id="selectCount" resultType="long">-->
+<!--        SELECT COUNT(*) FROM TB_BOOK_INFO-->
+<!--    </select>-->
+    <select id="listUser" resultType="com.niehao.model.User" resultMap="baseMap">
+        SELECT * FROM TB_USERVIP
+    </select>
+    <select id="selectCount" resultType="long">
+        SELECT COUNT(*) FROM TB_USERVIP
+    </select>
+    <select id="queryAccount" resultType="com.niehao.model.User">
+        SELECT * FROM TB_USERVIP WHERE ACCOUNT = #{account}
+    </select>
+</mapper>
